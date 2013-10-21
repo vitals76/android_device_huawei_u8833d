@@ -1,0 +1,26 @@
+#!/system/bin/sh
+# By xjljian
+SWAPADD="loop7"
+busybox swapoff /dev/block/$SWAPADD
+busybox umount /cache
+busybox umount /cust 
+busybox mke2fs /dev/block/mmcblk0p15
+busybox mke2fs -b 4096 /dev/block/mmcblk0p16
+busybox mount -t ext4 /dev/block/mmcblk0p16 /cache
+busybox losetup /dev/block/$SWAPADD /dev/block/mmcblk0p15
+busybox mkswap /dev/block/$SWAPADD 
+busybox swapon /dev/block/$SWAPADD 
+if cat /proc/swaps |busybox grep -q $SWAPADD
+then
+busybox mkdir -p /data/property/swapp15-run
+busybox echo "swap on"
+busybox echo "swap on"
+busybox echo "swap on"
+busybox echo "swap on"
+busybox echo "swap on"
+else
+busybox mkdir -p /data/property/swapp15-run
+busybox rmdir /data/property/swapp16-run
+busybox echo "swap on next boot"
+fi
+exit

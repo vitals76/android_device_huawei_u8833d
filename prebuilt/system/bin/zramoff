@@ -1,0 +1,9 @@
+#!/system/bin/sh
+# xjljian
+	
+if [ -d /data/property/zram-run ]
+then
+    busybox rm -rf /data/property/zram-run
+    busybox echo "Zram off next boot"
+fi
+exit

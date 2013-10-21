@@ -1,0 +1,15 @@
+#!/system/bin/sh
+# xjljian
+
+ZRAMSIZE=60
+
+if [ ! -d /data/property/zram-run ]
+then
+busybox mkdir -p /data/property/zram-run
+modprobe zram num_devices=1
+echo $(($ZRAMSIZE*1024*1024)) > /sys/block/zram0/disksize
+busybox mkswap /dev/block/zram0
+busybox swapon /dev/block/zram0
+busybox echo "Zram on next boot"
+fi
+exit
