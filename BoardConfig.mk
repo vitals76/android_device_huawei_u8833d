@@ -82,6 +82,7 @@ BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
 TARGET_USES_OVERLAY := true
 TARGET_USES_ION := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
+#
 TARGET_QCOM_MEDIA_VARIANT := caf
 #TARGET_NO_HW_VSYNC := false
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
@@ -91,6 +92,7 @@ BOARD_WANTS_EMMC_BOOT := true
   
 # Video
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+#
 TARGET_QCOM_MEDIA_VARIANT := legacy
 COMMON_GLOBAL_CFLAGS += -DQCOM_LEGACY_OMX -DQCOM_NO_SECURE_PLAYBACK
 
@@ -117,7 +119,7 @@ WIFI_DRIVER_MODULE_NAME := "dhd"
 WIFI_EXT_MODULE_PATH := "/system/lib/modules/cfg80211.ko"
 WIFI_EXT_MODULE_NAME := "cfg80211"
 
-TARGET_CUSTOM_WIFI := ../../device/huawei/u8833d/libhardware_legacy/wifi/wifi.c
+#TARGET_CUSTOM_WIFI := ../../device/huawei/u8833d/libhardware_legacy/wifi/wifi.c
 
 
 # Audio
@@ -132,8 +134,8 @@ BOARD_RIL_CLASS := ../../../device/huawei/u8833d/ril/
   # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/u8833d/bluetooth
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUEDROID_VENDOR_CONF := device/huawei/u8833d/bluetooth/vnd_u8833d.txt
+#BOARD_HAVE_BLUETOOTH_BCM := true
+
 # Camera
 USE_CAMERA_STUB := false
 BOARD_NEEDS_MEMORYHEAPPMEM := true
@@ -149,7 +151,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 
 # Hardware
-BOARD_HARDWARE_CLASS := device/huawei/u8833d/cmhw
+#BOARD_HARDWARE_CLASS := device/huawei/u8833d/cmhw
 
 
 
@@ -158,7 +160,7 @@ BOARD_HARDWARE_CLASS := device/huawei/u8833d/cmhw
 
 # Web Rendering
 ENABLE_WEBGL := true
-TARGET_FORCE_CPU_UPLOAD := true
+#TARGET_FORCE_CPU_UPLOAD := true
 BOARD_USE_QCOM_LLVM_CLANG_RS := true
 
 # Recovery
@@ -177,17 +179,6 @@ TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-
-
-
-# FM Radio
-BOARD_HAVE_FM_RADIO := true
-BOARD_FM_DEVICE := bcm4330
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-
-
-
-
 
 
 # Partitions

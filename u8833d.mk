@@ -33,7 +33,16 @@ DEVICE_PACKAGE_OVERLAYS += device/huawei/u8833d/overlay
 
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
-#add from device.mk
+
+#
+PRODUCT_PACKAGES += \
+    rild \
+    libril \
+    librilutils \
+    libreference-ril
+#libreference-ril     build shared library.     reference-ril build executable.
+#librilutils_static   BUILD_STATIC_LIBRARY.     librilutils BUILD_SHARED_LIBRARY.
+
 # Video
 PRODUCT_PACKAGES += \
     libI420colorconvert \
@@ -74,8 +83,6 @@ PRODUCT_PACKAGES += \
 # Other Packages
 PRODUCT_PACKAGES += \
     libgenlock \
-    setbtmac \
-    setwifimac \
     dexpreopt \
     make_ext4fs \
     setup_fs \
