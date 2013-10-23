@@ -96,7 +96,7 @@ PRODUCT_COPY_FILES += \
 
 # system
 PRODUCT_COPY_FILES += \
-  $(call find-copy-subdir-files,*,device/huawei/u8833d/prebuilt/system,system)
+  $(call find-copy-subdir-files,*,device/huawei/u8833d/vendor/system,system)
 
 
 
