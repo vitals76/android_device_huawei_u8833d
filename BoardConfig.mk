@@ -16,7 +16,7 @@
 
 
 
--include vendor/huawei/u8833d/BoardConfigVendor.mk
+-include device/huawei/u8833d/BoardConfigVendor.mk
 
 # CPU and Platform
 TARGET_NO_BOOTLOADER := true
@@ -76,7 +76,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8833d/include
 
 
  # Graphics
-BOARD_EGL_CFG := device/huawei/u8833d/prebuilt/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/huawei/u8833d/vendor/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
 TARGET_USES_OVERLAY := true
