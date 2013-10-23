@@ -27,7 +27,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The GPS configuration appropriate for this device.
 $(call inherit-product, device/common/gps/gps_as_supl.mk)
 
-$(call inherit-product, vendor/huawei/u8833d/u8833d-vendor.mk)
+#$(call inherit-product, vendor/huawei/u8833d/u8833d-vendor.mk)
+$(call inherit-product, device/huawei/u8833d/u8833d-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/huawei/u8833d/overlay
 
@@ -89,12 +90,11 @@ PRODUCT_PACKAGES += \
     Torch \
     com.android.future.usb.accessory 
 
+# root filesystem
 PRODUCT_COPY_FILES += \
-    device/huawei/u8833d/ramdisk/fstab.huawei:root/fstab.huawei \
-    device/huawei/u8833d/ramdisk/init.huawei.rc:root/init.huawei.rc \
-    device/huawei/u8833d/ramdisk/init.huawei.usb.rc:root/init.huawei.usb.rc \
-    device/huawei/u8833d/ramdisk/ueventd.huawei.rc:root/ueventd.huawei.rc
+  $(call find-copy-subdir-files,*,device/huawei/u8833d/ramdisk,root)
 
+# system
 PRODUCT_COPY_FILES += \
   $(call find-copy-subdir-files,*,device/huawei/u8833d/prebuilt/system,system)
 
@@ -113,7 +113,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 
 
 PRODUCT_TAGS += dalvik.gc.type-precise
