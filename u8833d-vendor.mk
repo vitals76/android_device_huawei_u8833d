@@ -23,6 +23,9 @@ PRODUCT_PACKAGES := \
 PRODUCT_COPY_FILES := \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
+PRODUCT_COPY_FILES := \
+    device/huawei/u8833d/prebuilt/system/lib/libaudcal.so:obj/lib/libaudcal.so
+
 # Pick up overlay for features that depend on non-open-source files
 #DEVICE_PACKAGE_OVERLAYS := vendor/huawei/u8833d/overlay
 
