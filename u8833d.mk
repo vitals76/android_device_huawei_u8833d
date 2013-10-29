@@ -37,10 +37,10 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 #
 PRODUCT_PACKAGES += \
-    rild \
     libril \
     librilutils \
-    libreference-ril
+#    rild \
+#    libreference-ril
 #libreference-ril     build shared library.     reference-ril build executable.
 #librilutils_static   BUILD_STATIC_LIBRARY.     librilutils BUILD_SHARED_LIBRARY.
 

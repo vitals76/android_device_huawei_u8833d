@@ -3,6 +3,7 @@
 #
 #
 # bin
+bin/rild
 bin/abtfilt
 bin/akmd8963
 bin/akmd8975
@@ -14,7 +15,6 @@ bin/diag_mdlog
 bin/gps_check
 bin/gpu_dcvsd
 bin/hci_qcomm_init
-bin/hwmac
 bin/load_oemlogo
 bin/mm-pp-daemon
 bin/mm-qcamera-daemon
@@ -161,6 +161,7 @@ lib/libqmi_client_qmux.so
 lib/libqmi_csvt_srvc.so
 lib/libqmiservices.so
 lib/libqueue.so
+lib/libreference-ril.so
 lib/libril-qc-1.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
