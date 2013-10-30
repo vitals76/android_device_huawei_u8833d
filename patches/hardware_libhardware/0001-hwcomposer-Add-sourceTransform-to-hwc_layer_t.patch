@@ -1,0 +1,28 @@
+From 132791b871b3e7515eecd12e57e964ac188cae38 Mon Sep 17 00:00:00 2001
+From: xjljian <xjlxxx3@gmail.com>
+Date: Thu, 31 Oct 2013 02:46:55 +0800
+Subject: [PATCH] hwcomposer Add sourceTransform to hwc_layer_t
+
+---
+ include/hardware/hwcomposer_v0.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/include/hardware/hwcomposer_v0.h b/include/hardware/hwcomposer_v0.h
+index 473819b..5826156 100644
+--- a/include/hardware/hwcomposer_v0.h
++++ b/include/hardware/hwcomposer_v0.h
+@@ -103,6 +103,11 @@ typedef struct hwc_layer {
+             /* blending to apply during composition */
+             int32_t blending;
+ 
++#ifdef QCOM_HARDWARE
++            /* source transform of the buffer */
++            uint32_t sourceTransform;
++#endif
++
+             /* area of the source to consider, the origin is the top-left corner of
+              * the buffer */
+             hwc_rect_t sourceCrop;
+-- 
+1.8.1.2
+

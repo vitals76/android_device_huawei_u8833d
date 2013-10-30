@@ -1,9 +1,8 @@
-From 33e6e80737c9215be38ca790c8318158586ee436 Mon Sep 17 00:00:00 2001
+From 1c77a764a8fdf74bb1886738259a25816fe10fac Mon Sep 17 00:00:00 2001
 From: xjljian <xjlxxx3@gmail.com>
-Date: Mon, 28 Oct 2013 18:39:34 +0800
+Date: Thu, 31 Oct 2013 02:26:29 +0800
 Subject: [PATCH] frameworks_av change
 
-Change-Id: I0268d281ddfb24078093992552e5a882006ef5fc
 ---
  camera/CameraParameters.cpp                        |    5 +
  include/camera/CameraParameters.h                  |    5 +
@@ -374,14 +373,14 @@ Change-Id: I0268d281ddfb24078093992552e5a882006ef5fc
  services/audioflinger/Android.mk                   |    4 +
  services/audioflinger/AudioFlinger.cpp             |    6 +-
  services/audioflinger/AudioMixer.cpp               |    2 +-
- services/audioflinger/AudioPolicyService.cpp       |    4 +
+ services/audioflinger/AudioPolicyService.cpp       |    6 +-
  services/audioflinger/AudioPolicyService.h         |    4 +
  services/audioflinger/RecordTracks.h               |    2 +-
  services/audioflinger/Threads.cpp                  |    8 +-
  services/audioflinger/TrackBase.h                  |    4 +-
  services/audioflinger/Tracks.cpp                   |   16 +-
  services/camera/libcameraservice/CameraClient.cpp  |    2 -
- 376 files changed, 83142 insertions(+), 83 deletions(-)
+ 376 files changed, 83143 insertions(+), 84 deletions(-)
  create mode 100644 include/media/stagefright/FMA2DPWriter.h
  create mode 100644 media/libstagefright/FMA2DPWriter.cpp
  create mode 100644 media/libstagefright/codecs/aacdec/SoftAAC.cpp
@@ -86693,7 +86692,7 @@ index 61cc0cf..7f42830 100644
  #else
                      quality = AudioResampler::DEFAULT_QUALITY;
 diff --git a/services/audioflinger/AudioPolicyService.cpp b/services/audioflinger/AudioPolicyService.cpp
-index e8e3dfa..e43c20a 100644
+index eb474c3..e43c20a 100644
 --- a/services/audioflinger/AudioPolicyService.cpp
 +++ b/services/audioflinger/AudioPolicyService.cpp
 @@ -1,5 +1,9 @@
@@ -86706,6 +86705,15 @@ index e8e3dfa..e43c20a 100644
   *
   * Licensed under the Apache License, Version 2.0 (the "License");
   * you may not use this file except in compliance with the License.
+@@ -492,7 +496,7 @@ bool AudioPolicyService::isStreamActive(audio_stream_type_t stream, uint32_t inP
+ 
+ bool AudioPolicyService::isStreamActiveRemotely(audio_stream_type_t stream, uint32_t inPastMs) const
+ {
+-#if !defined(ICS_AUDIO_BLOB) && !defined(MR1_AUDIO_BLOB)
++#ifndef ICS_AUDIO_BLOB
+     if (mpAudioPolicy == NULL) {
+         return 0;
+     }
 diff --git a/services/audioflinger/AudioPolicyService.h b/services/audioflinger/AudioPolicyService.h
 index 3e01713..ecbee5b 100644
 --- a/services/audioflinger/AudioPolicyService.h
