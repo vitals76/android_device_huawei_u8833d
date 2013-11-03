@@ -143,7 +143,9 @@ static const char P2P_CONFIG_FILE[]     = "/data/misc/wifi/p2p_supplicant.conf";
 static const char CONTROL_IFACE_PATH[]  = "/data/misc/wifi/sockets";
 static const char MODULE_FILE[]         = "/proc/modules";
 
-static const char DRIVER_PROP_MAC_PARAM[] = "wlan.module.mac_param";
+static const char P2P_DISABLE_PARM[]    = "p2p_disabled=1";
+
+static const char DRIVER_PROP_PARAM[] = "wlan.driver.arg";
 
 static const char SUPP_ENTROPY_FILE[]   = WIFI_ENTROPY_FILE;
 static unsigned char dummy_key[21] = { 0x02, 0x11, 0xbe, 0x33, 0x43, 0x35,
@@ -186,6 +188,9 @@ char* get_samsung_wifi_type()
 
     if (strncmp(buf, "semcove", 7) == 0)
         return "_semcove";
+
+    if (strncmp(buf, "semcosh", 7) == 0)
+        return "_semcosh";
 
     return NULL;
 }
@@ -292,7 +297,7 @@ int wifi_load_driver()
     char driver_status[PROPERTY_VALUE_MAX];
     int count = 100; /* wait at most 20 seconds for completion */
     char module_arg[256];
-    char module_mac_param[PROPERTY_VALUE_MAX];
+    char module_param[PROPERTY_VALUE_MAX];
     char module_arg2[256];
 #ifdef SAMSUNG_WIFI
     char* type = get_samsung_wifi_type();
@@ -314,8 +319,8 @@ int wifi_load_driver()
     usleep(200000);
 #endif
 
-    property_get(DRIVER_PROP_MAC_PARAM, module_mac_param, NULL);
-    sprintf(module_arg, "%s %s", DRIVER_MODULE_ARG, module_mac_param);
+    property_get(DRIVER_PROP_PARAM, module_param, NULL);
+    sprintf(module_arg, "%s %s", DRIVER_MODULE_ARG, module_param);
 
     if (insmod(DRIVER_MODULE_PATH, module_arg) < 0) {
 #endif
@@ -557,6 +562,10 @@ int ensure_config_file_exists(const char *config_file)
         TEMP_FAILURE_RETRY(write(destfd, buf, nread));
     }
 
+    if (!strcmp(config_file, SUPP_CONFIG_FILE)) {
+        TEMP_FAILURE_RETRY(write(destfd, P2P_DISABLE_PARM, strlen(P2P_DISABLE_PARM)));
+    }
+
     close(destfd);
     close(srcfd);
 
@@ -687,7 +696,8 @@ int phy_lookup()
         ALOGE("unexpected - found %d phys in /sys/class/ieee80211", n);
         for (i = 0; i < n; i++)
             free(namelist[i]);
-        free(namelist);
+        if (n > 0)
+            free(namelist);
         return -1;
     }
 
@@ -898,6 +908,16 @@ int wifi_start_supplicant(int p2p_supported)
         serial = pi->serial;
     }
 #endif
+
+#ifdef WIFI_DRIVER_MODULE_PATH
+    /* The ar6k driver needs the interface up in order to scan! */
+    if (!strncmp(DRIVER_MODULE_NAME, "ar6000", 6)) {
+        ifc_init();
+        ifc_up("eth0");
+        sleep(2);
+    }
+#endif
+
     property_get("wifi.interface", primary_iface, WIFI_TEST_INTERFACE);
 
     property_set("ctl.start", supplicant_name);

@@ -25,7 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The GPS configuration appropriate for this device.
-$(call inherit-product, device/common/gps/gps_as_supl.mk)
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 #$(call inherit-product, vendor/huawei/u8833d/u8833d-vendor.mk)
 $(call inherit-product, device/huawei/u8833d/u8833d-vendor.mk)
@@ -35,18 +35,9 @@ DEVICE_PACKAGE_OVERLAYS += device/huawei/u8833d/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-#
-PRODUCT_PACKAGES += \
-    libril \
-    librilutils \
-#    rild \
-#    libreference-ril
-#libreference-ril     build shared library.     reference-ril build executable.
-#librilutils_static   BUILD_STATIC_LIBRARY.     librilutils BUILD_SHARED_LIBRARY.
 
 # Video
 PRODUCT_PACKAGES += \
-    libI420colorconvert \
     libstagefrighthw \
     libmm-omxcore \
     libOmxCore
@@ -68,8 +59,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.u8833d \
-    libloc_api-rpc
+    gps.u8833d
 	
 # u8833d specific	
 PRODUCT_PACKAGES += \
@@ -79,7 +69,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
-    librs_jni
+    librs_jni \
+    VisualizationWallpapers   
 
 # Other Packages
 PRODUCT_PACKAGES += \
@@ -88,7 +79,7 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs \
     Torch \
-    com.android.future.usb.accessory 
+    com.android.future.usb.accessory
 
 # root filesystem
 PRODUCT_COPY_FILES += \
@@ -114,8 +105,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml    
 
+
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
