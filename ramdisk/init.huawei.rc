@@ -30,7 +30,7 @@ import init.device.rc
 import init.huawei.usb.rc
 
 on init
-#    mkdir /cust
+    mkdir /cust
 
     mkdir /storage 0775 system sdcard_r
     mkdir /storage/sdcard1 0000 system system
@@ -179,6 +179,31 @@ on post-fs-data
     chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
 
     setprop vold.post_fs_data_done 1
+
+#add to dualsim
+service ril-daemon1 /system/bin/rild -c 1
+    class main
+    socket rild1 stream 660 root radio
+    socket rild-debug1 stream 660 radio system
+    user root
+    disabled
+    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
+
+
+# set rild-libpath using modem build_id
+service ril-qmi /system/bin/sh /init.qcom.ril.path.sh
+    class main
+    user root
+    oneshot
+
+# add to dualsim
+#init.qcom.ril.path.sh fist to set ro.multi.rild=true,then init.qcom.class_main.sh base it to start ril-daemon1
+service qcom-c_main-sh /system/bin/sh /init.qcom.class_main.sh
+    class main
+    user root
+    oneshot
+
+#add end
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
