@@ -44,7 +44,7 @@ lib/egl/libEGL_adreno200.so
 lib/egl/libGLESv1_CM_adreno200.so
 lib/egl/libGLESv2_adreno200.so
 lib/egl/libq3dtools_adreno200.so
-#
+#lib/hw/camera.msm7627a.so
 lib/hw/camera.msm7x27a.so
 lib/hw/sensors.default.so
 #
@@ -54,7 +54,15 @@ lib/libaudcal.so
 lib/libaudioalsa.so
 lib/libaudioeq.so
 lib/libauth.so
+lib/libchromatix_imx074_default_video.so
+lib/libchromatix_imx074_preview.so
 lib/libchromatix_mt9e013_default_video.so
+lib/libchromatix_mt9e013_preview.so
+lib/libchromatix_mt9e013_video_hfr.so
+lib/libchromatix_mt9p017_default_video.so
+lib/libchromatix_mt9p017_preview.so
+lib/libchromatix_ov2720_default_video.so
+lib/libchromatix_ov2720_preview.so
 lib/libchromatix_ov5647_default_video.so
 lib/libchromatix_ov5647_ff_default_video.so
 lib/libchromatix_ov5647_ff_preview.so
@@ -152,6 +160,7 @@ lib/libOmxWmvDec.so
 lib/liboncrpc.so
 lib/libOpenVG.so
 lib/libpbmlib.so
+lib/libping_mdm.so
 lib/libqcci_legacy.so
 lib/libqc-opt.so
 lib/libqdi.so
@@ -162,6 +171,7 @@ lib/libqmi_csvt_srvc.so
 lib/libqmiservices.so
 lib/libqueue.so
 lib/libreference-ril.so
+lib/libril.so
 lib/libril-qc-1.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
