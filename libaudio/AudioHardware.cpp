@@ -41,7 +41,7 @@ extern "C" {
 //#include <media/AudioRecord.h>
 
 
-//#define COMBO_DEVICE_SUPPORTED // Headset speaker combo device not supported on this target
+#define COMBO_DEVICE_SUPPORTED // Headset speaker combo device not supported on this target
 #define DUALMIC_KEY "dualmic_enabled"
 #define TTY_MODE_KEY "tty_mode"
 #define ECHO_SUPRESSION "ec_supported"
@@ -661,12 +661,12 @@ uint32_t AudioHardware::getMvsMode(int format)
     case AudioSystem::EVRC:
         return   MVS_MODE_IS127;
         break;
-/*    case AudioSystem::EVRCB:
+    case AudioSystem::EVRCB:
         return MVS_MODE_4GV_NB;
         break;
     case AudioSystem::EVRCWB:
         return MVS_MODE_4GV_WB;
-        break; */
+        break;
     default:
         return BAD_INDEX;
     }
@@ -1501,9 +1501,9 @@ size_t AudioHardware::getInputBufferSize(uint32_t sampleRate, int format, int ch
          (format != AudioSystem::AMR_NB)     &&
          (format != AudioSystem::AMR_WB)     &&
          (format != AudioSystem::EVRC)       &&
-/*         (format != AudioSystem::EVRCB)      &&
+         (format != AudioSystem::EVRCB)      &&
          (format != AudioSystem::EVRCWB)     &&
-*/         (format != AudioSystem::QCELP)      &&
+         (format != AudioSystem::QCELP)      &&
          (format != AudioSystem::AAC)){
         ALOGW("getInputBufferSize bad format: 0x%x", format);
         return 0;

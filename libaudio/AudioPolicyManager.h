@@ -55,13 +55,6 @@ public:
         virtual status_t setDeviceConnectionState(audio_devices_t device,
                                                            AudioSystem::device_connection_state state,
                                                            const char *device_address);
-        virtual AudioSystem::device_connection_state getDeviceConnectionState(audio_devices_t device,
-                                                                              const char *device_address);
-        virtual audio_io_handle_t getInput(int inputSource,
-                                            uint32_t samplingRate,
-                                            uint32_t format,
-                                            uint32_t channels,
-                                            AudioSystem::audio_in_acoustics acoustics);
 
         virtual audio_devices_t getDeviceForVolume(audio_devices_t device);
 

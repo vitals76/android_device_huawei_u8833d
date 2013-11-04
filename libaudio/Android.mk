@@ -3,7 +3,6 @@
 #AUDIO_POLICY_TEST := true
 #ENABLE_AUDIO_DUMP := true
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),u8833d)
 TARGET_HAS_QACT := true
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
@@ -50,32 +49,33 @@ LOCAL_SHARED_LIBRARIES += libdl
 endif
 
 ifeq ($(strip $(TARGET_HAS_QACT)),true)
-LOCAL_SHARED_LIBRARIES += libaudcal
-endif
-
-# hack for prebuilt
 $(shell mkdir -p $(OUT)/obj/SHARED_LIBRARIES/libaudcal_intermediates/)
 $(shell touch $(OUT)/obj/SHARED_LIBRARIES/libaudcal_intermediates/export_includes)
+
+LOCAL_SHARED_LIBRARIES += libaudcal
+endif
 
 LOCAL_STATIC_LIBRARIES := \
     libmedia_helper \
     libaudiohw_legacy
 
-LOCAL_MODULE := audio.primary.u8833d
+LOCAL_MODULE := audio.primary.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_CFLAGS += -fno-short-enums
 
 LOCAL_C_INCLUDES := $(TARGET_OUT_HEADERS)/mm-audio/audio-alsa
+ifeq ($(strip $(TARGET_HAS_QACT)),true)
 LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/mm-audio/audcal
+endif
 LOCAL_C_INCLUDES += hardware/libhardware/include
 LOCAL_C_INCLUDES += hardware/libhardware_legacy/include
 LOCAL_C_INCLUDES += frameworks/base/include
 LOCAL_C_INCLUDES += system/core/include
 
-#LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-#LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -96,7 +96,7 @@ LOCAL_STATIC_LIBRARIES := \
     libmedia_helper \
     libaudiopolicy_legacy
 
-LOCAL_MODULE := audio_policy.u8833d
+LOCAL_MODULE := audio_policy.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 
@@ -106,8 +106,7 @@ endif
 
 LOCAL_C_INCLUDES := hardware/libhardware_legacy/audio
 
-#LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-#LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 include $(BUILD_SHARED_LIBRARY)
-endif # TARGET_BOOTLOADER_BOARD_NAME
