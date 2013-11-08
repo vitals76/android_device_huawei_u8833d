@@ -84,24 +84,32 @@ BOARD_USES_QCOM_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP -DQCOM_HARDWARE
 
 # Wi-Fi
-BOARD_WLAN_DEVICE := bcmdhd
-WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_LEGACY_NL80211_STA_EVENTS := true
-WIFI_DRIVER_FW_PATH_AP := "/system/etc/fw_4330_b2.bin"
-WIFI_DRIVER_FW_PATH_STA := "/system/etc/fw_4330_b2.bin"
-WIFI_DRIVER_FW_PATH_P2P := "/system/etc/fw_4330_b2.bin"
-WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/dhd/parameters/firmware_path"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/fw_4330_b2.bin nvram_path=/system/etc/nvram_4330.txt"
-WIFI_DRIVER_MODULE_NAME := "dhd"
-WIFI_EXT_MODULE_PATH := "/system/lib/modules/cfg80211.ko"
-WIFI_EXT_MODULE_NAME := "cfg80211"
+BOARD_WLAN_DEVICE                := ath6kl
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ath6kl
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_ath6kl
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+WIFI_DRIVER_MODULE_PATH          := "/data/misc/wifi/load/ar6000.ko"
+WIFI_DRIVER_MODULE_NAME          := "ar6000"
+WIFI_TEST_INTERFACE              := "sta"
+WIFI_DRIVER_FW_PATH_STA          := "sta"
+WIFI_DRIVER_FW_PATH_AP           := "ap"
+WIFI_DRIVER_FW_PATH_P2P          := "p2p"
+BOARD_HAS_ATH_WLAN := true
 
-#TARGET_CUSTOM_WIFI := ../../device/huawei/u8833d/libhardware_legacy/wifi/wifi.c
+KERNEL_EXTERNAL_MODULES:
+	mkdir -p $(TARGET_ROOT_OUT)/wifi
+	rm -rf $(TARGET_OUT_INTERMEDIATES)/ath6kl-huawei
+	cp -a hardware/atheros/wifi/ath6kl-huawei $(TARGET_OUT_INTERMEDIATES)/
+	$(MAKE) -C $(TARGET_OUT_INTERMEDIATES)/ath6kl-huawei/cfg80211 KERNEL_OUT=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-" modules
+	$(MAKE) -C $(TARGET_OUT_INTERMEDIATES)/ath6kl-huawei/ar6000 KERNEL_OUT=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-" modules
+	$(TARGET_OBJCOPY) --strip-unneeded $(TARGET_OUT_INTERMEDIATES)/ath6kl-huawei/cfg80211/cfg80211.ko $(TARGET_ROOT_OUT)/wifi/cfg80211.ko
+	$(TARGET_OBJCOPY) --strip-unneeded $(TARGET_OUT_INTERMEDIATES)/ath6kl-huawei/ar6000/ar6000.ko $(TARGET_ROOT_OUT)/wifi/ar6000.ko
+
+TARGET_KERNEL_MODULES := KERNEL_EXTERNAL_MODULES
+
+TARGET_CUSTOM_WIFI := ../../device/huawei/u8833d/libhardware_legacy/wifi/wifi.c
 
 
 # Audio
@@ -119,7 +127,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/u8833d/bluetooth
 
 # Camera
 USE_CAMERA_STUB := false
-BOARD_NEEDS_MEMORYHEAPPMEM := true
+#BOARD_NEEDS_MEMORYHEAPPMEM := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Dalvik
@@ -156,7 +164,7 @@ BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+#BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
@@ -171,4 +179,4 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1190596608
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 #usr more config from build/tools/releasetools/edify_generator.py
-TARGET_OTA_ASSERT_DEVICE := hwY300-0000
+TARGET_OTA_ASSERT_DEVICE := u8833,hwu8833,msm7x27a,msm7627a,u8833d,U8833D,u8951,u8951d
