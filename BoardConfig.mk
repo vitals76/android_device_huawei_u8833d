@@ -119,7 +119,7 @@ TARGET_PROVIDES_LIBAUDIO := true
 TARGET_PROVIDES_LIBLIGHTS := true
   
   # RIL
-BOARD_RIL_CLASS := ../../../device/huawei/u8833d/ril/
+#BOARD_RIL_CLASS := ../../../device/huawei/u8833d/ril/
   
   # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -178,5 +178,5 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1058320384
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1190596608
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-#usr more config from build/tools/releasetools/edify_generator.py
+#use more config from build/tools/releasetools/edify_generator.py
 TARGET_OTA_ASSERT_DEVICE := u8833,hwu8833,msm7x27a,msm7627a,u8833d,U8833D,u8951,u8951d

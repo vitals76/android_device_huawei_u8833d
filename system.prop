@@ -45,7 +45,7 @@ dev.pm.dyn_samplingrate=1
 ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # Telephony
-rild.libargs=-d/dev/smd0
+rild.libargs=-d /dev/smd0
 rild.libpath=/system/lib/libril-qc-qmi-1.so
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
@@ -58,9 +58,9 @@ persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 ro.telephony.call_ring.delay=3000
-ro.telephony.ril_class=HuaweiQualcommRIL
+#ro.telephony.ril_class=HuaweiQualcommRIL
 
-#ro.telephony.ril_class=QualcommSharedRIL
+ro.telephony.ril_class=QualcommSharedRIL
 
 ro.telephony.ril.v3=qcomdsds,skippinpukcount
 
