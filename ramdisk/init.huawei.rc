@@ -203,6 +203,8 @@ service qcom-c_main-sh /system/bin/sh /init.qcom.class_main.sh
     user root
     oneshot
 
+on property:vold.decrypt=trigger_restart_framework
+    start qcom-c_main-sh
 #add end
 
 on property:init.svc.wpa_supplicant=stopped

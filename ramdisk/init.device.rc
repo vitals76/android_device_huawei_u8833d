@@ -77,7 +77,7 @@ service compassd /system/bin/compassd
     oneshot
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
-    class late_start 
+    class late_start
     user root
 
 service thermald /system/bin/thermald

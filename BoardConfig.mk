@@ -43,6 +43,7 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 
+# SELinux
 BOARD_SEPOLICY_DIRS += device/huawei/u8833d/sepolicy
 
 BOARD_SEPOLICY_UNION += \
@@ -50,8 +51,9 @@ BOARD_SEPOLICY_UNION += \
     file.te
 
 # Kernel 
-TARGET_KERNEL_SOURCE := kernel/huawei/msm8x25
-TARGET_KERNEL_CONFIG := cm_msm8x25_defconfig
+TARGET_KERNEL_SOURCE := kernel/huawei/huawei-kernel-3.4
+#TARGET_KERNEL_CONFIG := cm_msm8x25_defconfig
+TARGET_KERNEL_CONFIG := u8833_defconfig
 TARGET_BOOTLOADER_BOARD_NAME := u8833d
 BOARD_KERNEL_CMDLINE := androidboot.hardware=huawei
 BOARD_KERNEL_BASE := 0x00200000
@@ -126,9 +128,8 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/u8833d/bluetooth
 
 # Camera
-USE_CAMERA_STUB := false
-#BOARD_NEEDS_MEMORYHEAPPMEM := true
-COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+USE_CAMERA_STUB := true
+COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
 
 # Dalvik
 TARGET_ARCH_LOWMEM := true
@@ -152,19 +153,17 @@ ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
 
 # Recovery
-TARGET_RECOVERY_INITRC := device/huawei/u8833d/recovery/init.rc
-TARGET_RECOVERY_FSTAB := device/huawei/u8833d/recovery/etc/recovery.fstab
-BOARD_HAS_LARGE_FILESYSTEM := true
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u8833d/recovery/recovery-keys.c
-DEVICE_RESOLUTION := 480x800
 BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
+TARGET_RECOVERY_INITRC := device/huawei/u8833d/recovery/init.rc
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/u8833d/recovery/graphics.c
+TARGET_RECOVERY_FSTAB := device/huawei/u8833d/ramdisk/fstab.huawei
 
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
-#BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
