@@ -12,6 +12,7 @@ Use the following local manifest:
     <project path="hardware/atheros/ath6kl" name="xjljian/android_hardware_atheros_ath6kl" remote="github" revision="cm-10.2" />
     <project path="hardware/atheros/wifi/ath6kl-huawei" name="xjljian/android_hardware_atheros_wifi_ath6kl-huawei" remote="github" revision="master" />
     <project path="kernel/huawei/huawei-kernel-3.4" name="xjljian/huawei-kernel-3.4" remote="github" revision="jellybean-mr2" />
+    <project path="device/huawei/u8833d" name="xjljian/android_device_huawei_u8833d" remote="github" revision="cm-10.2" />
     </manifest>
 
 
