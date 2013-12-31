@@ -115,7 +115,7 @@ TARGET_CUSTOM_WIFI := ../../device/huawei/u8833d/libhardware_legacy/wifi/wifi.c
 
 
 # Audio
-TARGET_PROVIDES_LIBAUDIO := true
+#TARGET_PROVIDES_LIBAUDIO := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true

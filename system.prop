@@ -32,9 +32,9 @@ ro.opengles.version=131072
 ro.sf.lcd_density=240
 
 # Huawei
-ro.confg.hw_appfsversion=U8833DV4_3_SYSIMG
-ro.confg.hw_appsbootversion=U8833dV4_3_APPSBOOT
-ro.confg.hw_appversion=U8833DV4_3_KERNEL
+ro.confg.hw_appfsversion=U8833DV4_4_SYSIMG
+ro.confg.hw_appsbootversion=U8833dV4_4_APPSBOOT
+ro.confg.hw_appversion=U8833DV4_4_KERNEL
 
 
 
@@ -82,3 +82,12 @@ ro.vold.umsdirtyratio=50
 # Wi-Fi
 wifi.interface=eth0
 wifi.supplicant_scan_interval=60
+
+
+#
+#
+persist.webview.provider=classic
+
+
+
+ro.config.low_ram=true

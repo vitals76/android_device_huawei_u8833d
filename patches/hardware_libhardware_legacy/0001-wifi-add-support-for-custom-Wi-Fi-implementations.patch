@@ -1,18 +1,17 @@
-From 4644181d6371b9dad8c991b2104f5a18e9870e7d Mon Sep 17 00:00:00 2001
-From: Daz Jones <yuki@thebronasium.com>
-Date: Sat, 27 Jul 2013 02:40:36 +0100
+From 6eb674a055f5e1d3a7018e8cb79ee6748f2f73b7 Mon Sep 17 00:00:00 2001
+From: xjljian <xjlxxx3@gmail.com>
+Date: Fri, 20 Dec 2013 22:03:54 +0800
 Subject: [PATCH] wifi: add support for custom Wi-Fi implementations
 
-Change-Id: Id464138cdb679fc4550914a32d9c71131bdfffb3
 ---
  wifi/Android.mk | 8 +++++++-
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/wifi/Android.mk b/wifi/Android.mk
-index 51afe3a..788520f 100644
+index c7bdc59..7a03b88 100644
 --- a/wifi/Android.mk
 +++ b/wifi/Android.mk
-@@ -43,7 +43,13 @@ ifdef WIFI_EXT_MODULE_NAME
+@@ -40,7 +40,13 @@ ifdef WIFI_EXT_MODULE_NAME
  LOCAL_CFLAGS += -DWIFI_EXT_MODULE_NAME=\"$(WIFI_EXT_MODULE_NAME)\"
  endif
  

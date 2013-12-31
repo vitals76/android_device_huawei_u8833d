@@ -2,6 +2,7 @@ import /init.recovery.${ro.hardware}.rc
 
 on early-init
     start ueventd
+    start healthd
 
 on init
     export PATH /sbin
@@ -70,6 +71,8 @@ on boot
 service ueventd /sbin/ueventd
     critical
 
+service healthd /sbin/healthd -n
+    critical
 service recovery /sbin/sh /sbin/charge.sh
     oneshot
 
@@ -81,6 +84,7 @@ service charge /sbin/charge
 
 service adbd /sbin/adbd recovery
     disabled
+    socket adbd stream 660 system system
 
 service rmt_storage /sbin/rmt_storage
     class main
