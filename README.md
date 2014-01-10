@@ -9,6 +9,7 @@ Use the following local manifest:
     <manifest>
     <remove-project name="CyanogenMod/android_frameworks_native" />
     <project path="frameworks/native" name="Dazzozo/android_frameworks_native" revision="cm-11.0" />
+    <project path="external/webkit" name="Dazzozo/android_external_webkit" remote="github" revision="kitkat" />
     <project path="hardware/qcom/display-legacy" name="xjljian/android_hardware_qcom_display-legacy" remote="github" revision="jellybean-mr2" />
     <project path="hardware/qcom/media-legacy" name="xjljian/android_hardware_qcom_media-legacy" remote="github" revision="jellybean-mr2" />
     <project path="hardware/atheros/ath6kl" name="xjljian/android_hardware_atheros_ath6kl" remote="github" revision="cm-11.0" />

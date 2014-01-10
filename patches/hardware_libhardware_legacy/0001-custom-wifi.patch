@@ -1,7 +1,7 @@
-From 6eb674a055f5e1d3a7018e8cb79ee6748f2f73b7 Mon Sep 17 00:00:00 2001
+From 4adaaa02eee696a66d5b140ff2b69d2d35a54a2c Mon Sep 17 00:00:00 2001
 From: xjljian <xjlxxx3@gmail.com>
-Date: Fri, 20 Dec 2013 22:03:54 +0800
-Subject: [PATCH] wifi: add support for custom Wi-Fi implementations
+Date: Sun, 5 Jan 2014 00:38:08 +0800
+Subject: [PATCH 1/2] custom wifi
 
 ---
  wifi/Android.mk | 8 +++++++-

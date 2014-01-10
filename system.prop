@@ -18,7 +18,7 @@ ro.cwm.enable_key_repeat=true
 # Dalvik
 dalvik.vm.heapgrowthlimit=32m
 dalvik.vm.heapsize=96m
-dalvik.vm.heapstartsize=5m
+
 #
 #dalvik.vm.dexopt-data-only=1
 
@@ -40,7 +40,7 @@ ro.confg.hw_appversion=U8833DV4_4_KERNEL
 
 
 # Memory
-sys.mem.max_hidden_apps=10
+
 
 # Qualcomm
 com.qc.hardware=true
@@ -88,6 +88,10 @@ wifi.supplicant_scan_interval=60
 #
 persist.webview.provider=classic
 
+dalvik.vm.heapgrowthlimit=32m
 
+dalvik.vm.heapsize=96m
+
+dalvik.vm.jit.codecachesize=0
 
 ro.config.low_ram=true

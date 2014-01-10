@@ -15,32 +15,43 @@
 #
 
 
-
 -include device/huawei/u8833d/BoardConfigVendor.mk
 
-# CPU and Platform
+
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_BOARD_PLATFORM := msm7x27a
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
+
+# CPU and Platform
 TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 
 TARGET_CPU_VARIANT := cortex-a5
 
-TARGET_ARCH_VARIANT := armv7-a-neon
- 
+TARGET_BOARD_PLATFORM := msm7x27a
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
+
+ARCH_ARM_HAVE_TLS_REGISTER := true
+
+TARGET_ARCH_LOWMEM := true
+
 TARGET_CPU_SMP := true
 
 
+# Qualcomm hardware
+BOARD_USES_QCOM_HARDWARE := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP -DQCOM_HARDWARE
+TARGET_USES_ION := true
+TARGET_USES_QCOM_BSP := true
+
+BOARD_WANTS_EMMC_BOOT := true
 
 
+# Compiler flags
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
-
-ARCH_ARM_HAVE_TLS_REGISTER := true
 
 
 # SELinux
@@ -50,12 +61,13 @@ BOARD_SEPOLICY_UNION += \
     file_contexts \
     file.te
 
+
 # Kernel 
 TARGET_KERNEL_SOURCE := kernel/huawei/huawei-kernel-3.4
 #TARGET_KERNEL_CONFIG := cm_msm8x25_defconfig
 TARGET_KERNEL_CONFIG := u8833_defconfig
 TARGET_BOOTLOADER_BOARD_NAME := u8833d
-BOARD_KERNEL_CMDLINE := androidboot.hardware=huawei
+BOARD_KERNEL_CMDLINE := androidboot.hardware=huawei androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_PAGE_SIZE := 2048
 
@@ -63,27 +75,20 @@ BOARD_PAGE_SIZE := 2048
 TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8833d/include
 
 
-
 # Graphics
 BOARD_EGL_CFG := device/huawei/u8833d/vendor/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
-TARGET_USES_ION := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
-#
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
-TARGET_USES_QCOM_BSP := true
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
+BOARD_USE_MHEAP_SCREENSHOT := true
+TARGET_DOESNT_USE_FENCE_SYNC := true
 
-BOARD_WANTS_EMMC_BOOT := true
-TARGET_QCOM_LEGACY_OMX := true
-  
-  
-
+ 
+# Media  
+TARGET_QCOM_LEGACY_MMPARSER := true
 TARGET_QCOM_MEDIA_VARIANT := legacy
 
-
-# Qualcomm hardware
-BOARD_USES_QCOM_HARDWARE := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_BSP -DQCOM_HARDWARE
 
 # Wi-Fi
 BOARD_WLAN_DEVICE                := ath6kl
@@ -115,24 +120,32 @@ TARGET_CUSTOM_WIFI := ../../device/huawei/u8833d/libhardware_legacy/wifi/wifi.c
 
 
 # Audio
-#TARGET_PROVIDES_LIBAUDIO := true
+BOARD_USES_LEGACY_ALSA_AUDIO := true
+TARGET_QCOM_AUDIO_VARIANT := legacy
+TARGET_PROVIDES_LIBAUDIO := true
+
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
+
   
-  # RIL
+# RIL
 #BOARD_RIL_CLASS := ../../../device/huawei/u8833d/ril/
+
   
-  # Bluetooth
+# Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/u8833d/bluetooth
 
+
 # Camera
+COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB -DNEEDS_VECTORIMPL_SYMBOLS
 USE_CAMERA_STUB := true
-COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
+
 
 # Dalvik
 TARGET_ARCH_LOWMEM := true
+
 
 # GPS
 BOARD_USES_QCOM_GPS := true
@@ -144,13 +157,11 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 BOARD_HARDWARE_CLASS := device/huawei/u8833d/cmhw
 
 
-
-
-
-
 # Web Rendering
 ENABLE_WEBGL := true
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 TARGET_FORCE_CPU_UPLOAD := true
+
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u8833d/recovery/recovery-keys.c
@@ -168,14 +179,14 @@ BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 
-
 # Partition sizes
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x800000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x1400000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1058320384
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 1190596608
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 1207943168
 BOARD_FLASH_BLOCK_SIZE := 131072
+
 
 #use more config from build/tools/releasetools/edify_generator.py
 TARGET_OTA_ASSERT_DEVICE := u8833,hwu8833,msm7x27a,msm7627a,u8833d,U8833D,u8951,u8951d

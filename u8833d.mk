@@ -20,6 +20,7 @@
 # lines, full and toro, hence its name.
 # Inherit from those products. Most specific first.
 
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
@@ -30,7 +31,9 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 #$(call inherit-product, vendor/huawei/u8833d/u8833d-vendor.mk)
 $(call inherit-product, device/huawei/u8833d/u8833d-vendor.mk)
 
+
 DEVICE_PACKAGE_OVERLAYS += device/huawei/u8833d/overlay
+
 
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -74,19 +77,20 @@ PRODUCT_PACKAGES += \
 
 # Other Packages
 PRODUCT_PACKAGES += \
-    libgenlock \
-    dexpreopt \
     make_ext4fs \
     setup_fs \
     Torch \
     com.android.future.usb.accessory
+
 # MAC
 PRODUCT_PACKAGES += \
     hwmac
 
+
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0
+
 
 # root filesystem
 PRODUCT_COPY_FILES += \
@@ -95,7 +99,6 @@ PRODUCT_COPY_FILES += \
 # system
 PRODUCT_COPY_FILES += \
   $(call find-copy-subdir-files,*,device/huawei/u8833d/vendor/system,system)
-
 
 
 # Install the features available on this device.
@@ -119,7 +122,8 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-$(call inherit-product, build/target/product/full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
+
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_u8833d
