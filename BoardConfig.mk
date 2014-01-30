@@ -164,28 +164,69 @@ TARGET_FORCE_CPU_UPLOAD := true
 
 
 # Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u8833d/recovery/recovery-keys.c
-BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
-TARGET_RECOVERY_INITRC := device/huawei/u8833d/recovery/init.rc
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/u8833d/recovery/graphics.c
-TARGET_RECOVERY_FSTAB := device/huawei/u8833d/ramdisk/fstab.huawei
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_INITRC := device/huawei/u8833d/init.rc
+TARGET_RECOVERY_FSTAB := device/huawei/u8833d/recovery.fstab
+RECOVERY_FSTAB_VERSION = 1
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_MISC_PARTITION := true
+BOARD_USES_MMCUTILS := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+DEVICE_RESOLUTION := 480x800
+SP1_NAME := "cust"
+SP1_BACKUP_METHOD := files
+SP1_MOUNTABLE := 1
+SP2_NAME := "internal_sd"
+SP2_BACKUP_METHOD := files
+SP2_MOUNTABLE := 1
+
+SP3_NAME := "fat"
+SP3_BACKUP_METHOD := files
+SP3_MOUNTABLE := 1
+SP4_NAME := "modem_st1"
+SP4_BACKUP_METHOD := dd
+SP4_MOUNTABLE := 0
+SP5_NAME := "modem_st2"
+SP5_BACKUP_METHOD := dd
+SP5_MOUNTABLE := 0
+
+TW_INTERNAL_STORAGE_PATH := "/internal_sd"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "internal_sd"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_DEFAULT_EXTERNAL_STORAGE := true
+TW_FLASH_FROM_STORAGE := true 
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
+TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.524288/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 255
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/u8833d/recovery/graphics.c
+# USB Mounting
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
 
 
 # USB
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 
-# Partition sizes
-TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x800000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x1400000
+# Partitions
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1207943168
-BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00C00000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x1400000
+BOARD_FLASH_BLOCK_SIZE := 0x00020000
+TARGET_USERIMAGES_USE_EXT4 := true
+
+BOARD_CACHE_DEVICE := /dev/block/mmcblk0p15
+BOARD_CACHE_FILESYSTEM := ext4
+BOARD_CACHE_FILESYSTEM_OPTIONS := rw
+BOARD_SYSTEM_DEVICE := /dev/block/mmcblk0p17
+BOARD_SYSTEM_FILESYSTEM := ext4
+BOARD_SYSTEM_FILESYSTEM_OPTIONS := rw
+BOARD_DATA_DEVICE := /dev/block/mmcblk0p18
+BOARD_DATA_FILESYSTEM := ext4
+BOARD_DATA_FILESYSTEM_OPTIONS := rw
 
 
 #use more config from build/tools/releasetools/edify_generator.py

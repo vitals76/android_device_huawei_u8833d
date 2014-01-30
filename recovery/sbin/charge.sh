@@ -12,8 +12,6 @@ fi
 
 # Turn on soft keys light for recovery mode.
 echo 255 > /sys/class/leds/button-backlight/brightness
-echo 255 > /sys/class/leds/red/brightness
-echo 255 > /sys/class/leds/green/brightness
 
 # We haven't exited, start recovery.
 /sbin/recovery
