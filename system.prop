@@ -40,7 +40,8 @@ ro.confg.hw_appversion=U8833DV4_4_KERNEL
 
 
 # Memory
-
+ro.ksm.default=1
+ro.config.low_ram=true
 
 # Qualcomm
 com.qc.hardware=true
@@ -93,5 +94,3 @@ dalvik.vm.heapgrowthlimit=32m
 dalvik.vm.heapsize=96m
 
 dalvik.vm.jit.codecachesize=0
-
-ro.config.low_ram=true
