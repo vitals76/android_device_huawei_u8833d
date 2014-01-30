@@ -130,7 +130,7 @@ TARGET_PROVIDES_LIBLIGHTS := true
 
   
 # RIL
-#BOARD_RIL_CLASS := ../../../device/huawei/u8833d/ril/
+BOARD_RIL_CLASS := ../../../device/huawei/u8833d/ril/
 
   
 # Bluetooth
