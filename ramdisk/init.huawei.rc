@@ -91,6 +91,9 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
+    # zRAM
+    write /proc/sys/vm/page-cluster 0
+
     chmod 0664 /dev/light
     chmod 0664 /dev/proximity
     chmod 0664 /dev/accel
@@ -144,6 +147,9 @@ on boot
 on emmc-fs
     # mount mmc partitions
     mount_all /fstab.huawei
+
+    # zRAM
+    swapon_all /fstab.huawei
 
 # msm specific files that need to be created on /data
 on post-fs-data
