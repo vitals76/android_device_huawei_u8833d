@@ -9,9 +9,7 @@ Use the following local manifest:
     <manifest>
     <remove-project name="CyanogenMod/android_frameworks_native" />
     <remove-project name="CyanogenMod/android_frameworks_av" />
-    <remove-project name="CyanogenMod/android_bootable_recovery" />
-    <project path="bootable/recovery" name="PuikyMod/Team-Win-Recovery-Project" remote="github" revision="twrp2.7_CN" />
-    <project path="frameworks/native" name="Dazzozo/android_frameworks_native" remote="github" revision="cm-11.0" />
+    <project path="frameworks/native" name="Dazzozo/android_frameworks_native" revision="cm-11.0" />
     <project path="frameworks/av" name="legaCyMod/android_frameworks_av" remote="github" revision="cm-11.0" />
     <project path="external/webkit" name="Dazzozo/android_external_webkit" remote="github" revision="kitkat" />
     <project path="hardware/qcom/display-legacy" name="xjljian/android_hardware_qcom_display-legacy" remote="github" revision="jellybean-mr2" />
@@ -19,7 +17,7 @@ Use the following local manifest:
     <project path="hardware/atheros/ath6kl" name="xjljian/android_hardware_atheros_ath6kl" remote="github" revision="cm-11.0" />
     <project path="hardware/atheros/wifi/ath6kl-huawei" name="xjljian/android_hardware_atheros_wifi_ath6kl-huawei" remote="github" revision="master" />
     <project path="kernel/huawei/huawei-kernel-3.4" name="xjljian/huawei-kernel-3.4" remote="github" revision="kitkat" />
-    <project path="device/huawei/u8833d" name="PuikyMod/android_device_huawei_u8833d" remote="github" revision="cm-11.0" />
+    <project path="device/huawei/u8833d" name="xjljian/android_device_huawei_u8833d" remote="github" revision="cm-11.0" />
     </manifest>
 
 
