@@ -19,8 +19,7 @@ ro.cwm.enable_key_repeat=true
 dalvik.vm.heapgrowthlimit=32m
 dalvik.vm.heapsize=96m
 dalvik.vm.heapstartsize=5m
-#
-#dalvik.vm.dexopt-data-only=1
+
 
 # Display
 debug.composition.type=dyn
@@ -70,7 +69,6 @@ ro.telephony.ril.v3=qcomdsds,skippinpukcount
 
 persist.multisim.config=dsds
 persist.dsds.enabled=true
-ro.dual.sim.phone=true
 
 
 ro.telephony.call_ring.multiple=false
