@@ -27,15 +27,12 @@
 #define WIFI_MAC_PROPERTY "persist.wifi.mac"
 #define DRIVER_ARG_PROP_NAME "wlan.driver.arg"
 #define WIFI_SOFTMAC_FILE "/data/misc/wifi/softmac"
-#define BT_MAC_PATH_PROPERTY "ro.bt.bdaddr_path"
 
 static void start_rpc_client(bool enable);
 static bool is_modem_available(void);
 static void handle_wlan_mac(void);
-static void handle_bt_mac(void);
 
 static void get_wlan_mac(unsigned char *buffer);
-static void get_bt_mac(unsigned char *buffer);
 
 int main()
 {
@@ -47,7 +44,6 @@ int main()
 	}
 
 	handle_wlan_mac();
-	handle_bt_mac();
 
 exit:
 	start_rpc_client(false);
@@ -109,7 +105,7 @@ static void handle_wlan_mac(void)
 	if (!property_get(WIFI_MAC_PROPERTY, wlan_mac_address, NULL)) {
 		get_wlan_mac(wlanmac);
 
-		sprintf(wlan_mac_address, "%02X:%02X:%02X:%02X:%02X:%02X",
+		sprintf(wlan_mac_address, "%.2X:%.2X:%.2X:%.2X:%.2X:%.2X",
 			wlanmac[0], wlanmac[1], wlanmac[2],
 			wlanmac[3], wlanmac[4], wlanmac[5]);
 
@@ -131,39 +127,6 @@ static void get_wlan_mac(unsigned char *buffer)
 
 	/* Read the WLAN MAC NV Item */
 	nv_cmd_remote(NV_READ_F, NV_WLAN_MAC_ADDRESS_I, &nv_item);
-
-	/* Convert endianness (reverse the order). */
-	for (i = 0; i < MAC_SIZE; i++)
-		buffer[(MAC_SIZE - 1) - i] = nv_item.mac_address[i];
-}
-
-static void handle_bt_mac(void)
-{
-	unsigned char btmac[MAC_SIZE];
-	char bt_path_property[PROPERTY_VALUE_MAX];
-	char bt_mac_address[MAC_STRING_SIZE];
-
-	/* Bluetooth MAC address is stored in a file. If the file path is set,
-	 * write the MAC address. */
-	if (property_get(BT_MAC_PATH_PROPERTY, bt_path_property, NULL)) {
-		get_bt_mac(btmac);
-
-		snprintf(bt_mac_address, MAC_STRING_SIZE,
-			"%02X:%02X:%02X:%02X:%02X:%02X",
-			btmac[0], btmac[1], btmac[2],
-			btmac[3], btmac[4], btmac[5]);
-
-		write_file(bt_path_property, bt_mac_address, AID_BLUETOOTH, AID_NET_BT_STACK);
-	}
-}
-
-static void get_bt_mac(unsigned char *buffer)
-{
-	nv_item_type nv_item;
-	int i;
-
-	/* Read the BT MAC NV Item */
-	nv_cmd_remote(NV_READ_F, NV_BT_MAC_ADDRESS_I, &nv_item);
 
 	/* Convert endianness (reverse the order). */
 	for (i = 0; i < MAC_SIZE; i++)
