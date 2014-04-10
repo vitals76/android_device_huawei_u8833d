@@ -71,6 +71,7 @@ ro.telephony.ril.v3=qcomdsds,skippinpukcount
 
 persist.multisim.config=dsds
 persist.dsds.enabled=true
+persist.radio.multisim.config=dsds
 
 
 ro.telephony.call_ring.multiple=false
