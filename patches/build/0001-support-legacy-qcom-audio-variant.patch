@@ -1,7 +1,7 @@
-From 9cf049577ceb80ae12f041df8793349d3a6e0ee8 Mon Sep 17 00:00:00 2001
+From 71103e10ffaa205527f6eb0ec11d10a31b76bf1b Mon Sep 17 00:00:00 2001
 From: xjljian <xjlxxx3@gmail.com>
 Date: Sat, 11 Jan 2014 00:22:59 +0800
-Subject: [PATCH] support legacy qcom audio variant
+Subject: [PATCH 1/2] support legacy qcom audio variant
 
 ---
  core/qcom_target.mk | 2 +-
