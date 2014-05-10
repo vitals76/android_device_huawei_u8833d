@@ -158,7 +158,7 @@
 /dev/block/mmcblk0p7      0660  system     system
 /dev/hw_extern_sdcard     0444  sdcard_rw  sdcard_rw
 #/dev/phudiag             0664  system     system
-/dev/smem_sleep_log       0664	system     system
+/dev/smem_sleep_log       0664  system     system
 /dev/pn544                0660  nfc        nfc
 /dev/key_test             0664  system     system
 
