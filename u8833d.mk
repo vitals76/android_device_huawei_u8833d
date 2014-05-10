@@ -25,7 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The GPS configuration appropriate for this device.
-$(call inherit-product, device/common/gps/gps_eu_supl.mk)
+$(call inherit-product, device/common/gps/gps_as_supl.mk)
 
 #$(call inherit-product, vendor/huawei/u8833d/u8833d-vendor.mk)
 $(call inherit-product, device/huawei/u8833d/u8833d-vendor.mk)
@@ -35,6 +35,9 @@ DEVICE_PACKAGE_OVERLAYS += device/huawei/u8833d/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
+
+PRODUCT_PACKAGES += \
+    BasicSmsReceiver
 
 # Video
 PRODUCT_PACKAGES += \
@@ -60,7 +63,7 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     gps.u8833d
-	
+
 # u8833d specific	
 PRODUCT_PACKAGES += \
     lights.u8833d
@@ -74,12 +77,11 @@ PRODUCT_PACKAGES += \
 
 # Other Packages
 PRODUCT_PACKAGES += \
-    libgenlock \
-    dexpreopt \
     make_ext4fs \
     setup_fs \
     Torch \
     com.android.future.usb.accessory
+
 # MAC
 PRODUCT_PACKAGES += \
     hwmac
@@ -98,7 +100,7 @@ PRODUCT_COPY_FILES += \
 
 
 
-# Install the features available on this device.
+# Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -112,6 +114,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 
 

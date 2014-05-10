@@ -7,8 +7,9 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Inherit device configuration
 $(call inherit-product, device/huawei/u8833d/u8833d.mk)
 
-# Correct boot animation size for the screen.
-TARGET_BOOTANIMATION_NAME := vertical-480x800
+# Correct boot animation size for the screen
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := u8833d
