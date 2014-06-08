@@ -29,6 +29,6 @@ LOCAL_SHARED_LIBRARIES := libhardware_legacy liblog
 
 LOCAL_MODULE := lights.u8833d
 
-include $(BUILD_SHARED_LIBRARY)
+#include $(BUILD_SHARED_LIBRARY)
 
 endif

@@ -65,8 +65,8 @@ PRODUCT_PACKAGES += \
     gps.u8833d
 	
 # u8833d specific	
-PRODUCT_PACKAGES += \
-    lights.u8833d
+#PRODUCT_PACKAGES += \
+#    lights.u8833d
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
