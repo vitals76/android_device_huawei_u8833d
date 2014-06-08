@@ -66,8 +66,8 @@ ro.telephony.call_ring.delay=3000
 ro.telephony.ril.v3=qcomdsds,skippinpukcount
 
 persist.multisim.config=dsds
-persist.dsds.enabled=true
 persist.radio.multisim.config=dsds
+ro.multi.rild=true
 
 
 ro.telephony.call_ring.multiple=false
