@@ -38,6 +38,12 @@ DEVICE_PACKAGE_OVERLAYS += device/huawei/u8833d/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
+# Packages
+PRODUCT_PACKAGES += \
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
+
 
 # Video
 PRODUCT_PACKAGES += \

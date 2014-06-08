@@ -32,8 +32,10 @@ ro.confg.hw_appfsversion=U8833DV4_4_SYSIMG
 ro.confg.hw_appsbootversion=U8833dV4_4_APPSBOOT
 ro.confg.hw_appversion=U8833DV4_4_KERNEL
 
-
-
+#FM
+ro.fm.analogpath.supported=false
+ro.fm.transmitter=false
+ro.fm.mulinst.recording.support=false
 
 # Memory
 ro.ksm.default=1

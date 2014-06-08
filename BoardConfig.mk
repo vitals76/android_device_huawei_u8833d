@@ -61,6 +61,10 @@ BOARD_SEPOLICY_UNION += \
     file_contexts \
     file.te
 
+# FM
+BOARD_HAVE_QCOM_FM := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
+
 
 # Kernel 
 TARGET_KERNEL_SOURCE := kernel/huawei/huawei-kernel-3.4
