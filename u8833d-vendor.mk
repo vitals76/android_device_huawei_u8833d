@@ -30,7 +30,8 @@ PRODUCT_COPY_FILES := \
     device/huawei/u8833d/vendor/system/lib/liboncrpc.so:obj/lib/liboncrpc.so \
     device/huawei/u8833d/vendor/system/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
     device/huawei/u8833d/vendor/system/lib/libnv.so:obj/lib/libnv.so \
-    device/huawei/u8833d/vendor/system/lib/libril.so:obj/lib/libril.so
+    device/huawei/u8833d/vendor/system/lib/libril.so:obj/lib/libril.so \
+    device/huawei/u8833d/vendor/system/lib/libdivxdrmdecrypt.so:obj/lib/libdivxdrmdecrypt.so
 
 
 
