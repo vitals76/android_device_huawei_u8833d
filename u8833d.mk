@@ -41,6 +41,7 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 # Packages
 PRODUCT_PACKAGES += \
     FM2 \
+    FMRecord \
     libqcomfm_jni \
     qcom.fmradio
 
