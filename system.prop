@@ -79,6 +79,9 @@ ro.telephony.call_ring.multiple=false
 
 gsm.version.baseband=2030
 
+#Fix for airplane mode
+persist.radio.apm_sim_not_pwdn=1
+
 # USB
 persist.sys.usb.config=mtp,adb
 ro.vold.umsdirtyratio=50
