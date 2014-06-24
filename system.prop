@@ -79,6 +79,9 @@ ro.telephony.call_ring.multiple=false
 
 gsm.version.baseband=2030
 
+# Time services
+persist.timed.enable=true
+
 #Fix for airplane mode
 persist.radio.apm_sim_not_pwdn=1
 
