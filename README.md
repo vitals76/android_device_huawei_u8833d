@@ -7,13 +7,9 @@ Use the following local manifest:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <manifest>
-
-  <remote  name="github"
-           fetch=".."
-           review="review.cyanogenmod.org" />
-
-    <remove-project name="CyanogenMod/android_frameworks_native" />
-    <remove-project name="CyanogenMod/android_frameworks_av" />
+    <remote name="github" fetch=".." review="review.cyanogenmod.org" />
+    <remove-project name="MoKee/android_frameworks_native" />
+    <remove-project name="MoKee/android_frameworks_av" />
     <project path="frameworks/native" name="Dazzozo/android_frameworks_native" remote="github" revision="cm-11.0" />
     <project path="frameworks/av" name="legaCyMod/android_frameworks_av" remote="github" revision="cm-11.0" />
     <project path="external/webkit" name="Dazzozo/android_external_webkit" remote="github" revision="kitkat" />
