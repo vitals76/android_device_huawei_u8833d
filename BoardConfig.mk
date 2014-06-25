@@ -157,7 +157,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 
 # Hardware
-BOARD_HARDWARE_CLASS := device/huawei/u8833d/cmhw
+BOARD_HARDWARE_CLASS := device/huawei/u8833d/mkhw
 
 
 # Web Rendering

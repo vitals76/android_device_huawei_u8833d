@@ -1,5 +1,5 @@
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/mk/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/huawei/u8833d/u8833d.mk)
@@ -9,7 +9,7 @@ TARGET_BOOTANIMATION_NAME := vertical-480x800
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := u8833d
-PRODUCT_NAME := cm_u8833d
+PRODUCT_NAME := mk_u8833d
 PRODUCT_BRAND := Huawei
 PRODUCT_MODEL := HUAWEI Y300-0000
 PRODUCT_MANUFACTURER := HUAWEI
