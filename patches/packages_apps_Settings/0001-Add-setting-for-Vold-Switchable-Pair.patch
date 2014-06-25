@@ -1,14 +1,8 @@
-From d95a76e3556eaf5eabdfd43f9f0230373e188f18 Mon Sep 17 00:00:00 2001
-From: dhacker29 <davidhackerdvm@gmail.com>
-Date: Sat, 17 Aug 2013 16:35:18 -0500
-Subject: [PATCH] Add setting for Vold Switchable Pair (2/2)
+From ee6362330174e599b9645292df6ba4126a2f1539 Mon Sep 17 00:00:00 2001
+From: xjljian <xjljian@gmail.com>
+Date: Tue, 27 May 2014 23:57:37 +0800
+Subject: [PATCH] Add setting for Vold Switchable Pair
 
-This will be hidden unless the device has non-emulated internal storage
-and an external SD, in which case persist.sys.vold.switchablepair will be
-set automaticaly.  This does away with the need for ro.vold.switchablepair
-to be set in the build.prop.
-
-Change-Id: Id83fc90d771ca3a7179f2c50d0ae828eb3dbaa9f
 ---
  AndroidManifest.xml                             |  1 +
  res/values/cm_strings.xml                       |  7 ++++
@@ -17,7 +11,7 @@ Change-Id: Id83fc90d771ca3a7179f2c50d0ae828eb3dbaa9f
  4 files changed, 66 insertions(+), 1 deletion(-)
 
 diff --git a/AndroidManifest.xml b/AndroidManifest.xml
-index 5825e8e..5993e07 100644
+index a7ab17b..d009a15 100644
 --- a/AndroidManifest.xml
 +++ b/AndroidManifest.xml
 @@ -72,6 +72,7 @@
@@ -26,13 +20,13 @@ index 5825e8e..5993e07 100644
      <uses-permission android:name="android.permission.CHANGE_PHONE_BLACKLIST" />
 +    <uses-permission android:name="android.permission.REBOOT" />
  
-     <permission
-         android:name="android.permission.REQUEST_SUPERUSER"
+     <!-- MOKEE PUSH PERMISSION START -->
+     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index ed81926..6667e5a 100644
+index ab7ec37..ec238ee 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
-@@ -700,6 +700,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
+@@ -723,6 +723,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
      <string name="adb_notify">USB debugging notify</string>
      <string name="adb_notify_summary">Display a notification when USB debugging is connected</string>
  
